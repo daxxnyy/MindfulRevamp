@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mindful - Pagina Principală</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root { --bg: #ececec; --text: #333; --primary: #444; --primary-hover: #333; --accent: #ffdd57; --feature-bg: #ffffff; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Roboto', sans-serif; line-height: 1.6; overflow-x: hidden; background-color: var(--bg); color: var(--text); padding-top: 80px; }
+    .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+    header { width: 100%; position: fixed; top: 0; left: 0; background: var(--feature-bg); z-index: 1000; padding: 30px 0; transition: padding 0.3s; }
+    .header-container { display: flex; align-items: center; justify-content: space-between; }
+    .logo h1 { font-family: 'Montserrat', sans-serif; font-size: 2.5em; transition: font-size 0.3s; }
+    .logo-link { text-decoration: none; color: green; }
+    .nav-right { display: flex; gap: 15px; align-items: center; }
+    .nav-btn { text-decoration: none; font-size: 1em; padding: 10px 20px; border-radius: 30px; background: var(--primary); color: #fff; transition: background 0.3s, transform 0.3s, font-size 0.3s; }
+    .nav-btn:hover { background: var(--primary-hover); transform: translateY(-2px); }
+    .profile-img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
+    header.scrolled { padding: 10px 0; }
+    header.scrolled .logo h1 { font-size: 1.8em; }
+    header.scrolled .nav-btn { font-size: 0.8em; }
+    header.scrolled .blog-link { display: none; }
+    main { padding: 40px 20px; }
+    footer { padding: 40px 20px; background: #333; color: #fff; text-align: center; }
+    footer .contact-info h4 { font-family: 'Montserrat', sans-serif; margin-bottom: 10px; }
+    .content { margin-top: 20px; }
+    .survey-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); display: flex; align-items: center; justify-content: center; z-index: 2000; opacity: 0; pointer-events: none; transition: opacity 0.4s ease; }
+    .survey-modal.active { opacity: 1; pointer-events: auto; }
+    .survey-container { width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+    .survey-page { width: 90%; max-width: 600px; background: #fff; border-radius: 8px; padding: 30px; display: none; }
+    .survey-page.active { display: block; }
+    .survey-container h2 { font-family: 'Montserrat', sans-serif; margin-bottom: 20px; text-align: center; }
+    .survey-section { margin-bottom: 20px; }
+    .survey-section h3 { margin-bottom: 10px; font-size: 1.1rem; text-align: center; }
+    .options { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+    .option { padding: 10px 15px; border: 2px solid #74ebd5; border-radius: 20px; cursor: pointer; transition: background 0.3s, color 0.3s; }
+    .option:hover, .option.selected { background: #74ebd5; color: #fff; }
+    .survey-footer { text-align: center; display: flex; justify-content: center; gap: 20px; margin-top: 20px; }
+    .survey-footer button { padding: 10px 20px; border: none; background: #acb6e5; color: #fff; border-radius: 4px; cursor: pointer; font-size: 1rem; transition: background 0.3s; }
+    .survey-footer button:hover { background: #8aa4d1; }
+  </style>
+</head>
+<body>
+  <header id="header">
+    <div class="container header-container">
+      <div class="logo">
+        <h1><a href="index.html" class="logo-link">Mindful</a></h1>
+      </div>
+      <nav class="nav-right">
+        <a href="blog.html" class="nav-btn blog-link">Blog</a>
+        <img src="assets/pfp.jpg" alt="Profile" class="profile-img">
+      </nav>
+    </div>
+  </header>
+  <main class="content">
+    <div class="container">
+      <p>Bine ai venit pe Mindful. Aceasta este pagina principală a aplicației, iar aici vei putea accesa funcționalități educaționale moderne.</p>
+    </div>
+  </main>
+  <footer id="contact">
+    <div class="container">
+      <div class="contact-info">
+        <h4>Contact</h4>
+        <p>Email: mindfulcontact@gmail.com</p>
+        <p>Telefon: 0748402864</p>
+        <p>© 2025 Mindful</p>
+      </div>
+      <div class="social-media"></div>
+    </div>
+  </footer>
+  <div class="survey-modal" id="surveyModal">
+    <div class="survey-container">
+      <div class="survey-page" id="page1">
+        <h2>Setări Inițiale</h2>
+        <div class="survey-section">
+          <h3>Ce clasă ești?</h3>
+          <div class="options" data-question="grade">
+            <div class="option" data-value="I">I</div>
+            <div class="option" data-value="II">II</div>
+            <div class="option" data-value="III">III</div>
+            <div class="option" data-value="IV">IV</div>
+            <div class="option" data-value="V">V</div>
+            <div class="option" data-value="VI">VI</div>
+            <div class="option" data-value="VII">VII</div>
+            <div class="option" data-value="VIII">VIII</div>
+            <div class="option" data-value="IX">IX</div>
+            <div class="option" data-value="X">X</div>
+            <div class="option" data-value="XI">XI</div>
+            <div class="option" data-value="XII">XII</div>
+          </div>
+        </div>
+        <div class="survey-footer">
+          <button id="skip1">Skip</button>
+          <button id="next1">Next</button>
+        </div>
+      </div>
+      <div class="survey-page" id="page2">
+        <h2>Setări Inițiale</h2>
+        <div class="survey-section">
+          <h3>Ce materii îți plac cel mai mult?</h3>
+          <div class="options" id="favOptions" data-question="favorite_subjects"></div>
+        </div>
+        <div class="survey-footer">
+          <button id="back2">Back</button>
+          <button id="skip2">Skip</button>
+          <button id="next2">Next</button>
+        </div>
+      </div>
+      <div class="survey-page" id="page3">
+        <h2>Setări Inițiale</h2>
+        <div class="survey-section">
+          <h3>Cât timp înveți în medie pe zi?</h3>
+          <div class="options" data-question="daily_study_time">
+            <div class="option" data-value="Peste o ora">Peste o ora</div>
+            <div class="option" data-value="O ora">O ora</div>
+            <div class="option" data-value="30 de minute">30 de minute</div>
+            <div class="option" data-value="15 minute">15 minute</div>
+            <div class="option" data-value="5 minute">5 minute</div>
+          </div>
+        </div>
+        <div class="survey-footer">
+          <button id="back3">Back</button>
+          <button id="skip3">Skip</button>
+          <button id="saveSurvey">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    var surveyModal = document.getElementById('surveyModal');
+    var page1 = document.getElementById('page1');
+    var page2 = document.getElementById('page2');
+    var page3 = document.getElementById('page3');
+    var favOptions = document.getElementById('favOptions');
+    var skip1 = document.getElementById('skip1');
+    var next1 = document.getElementById('next1');
+    var back2 = document.getElementById('back2');
+    var skip2 = document.getElementById('skip2');
+    var next2 = document.getElementById('next2');
+    var back3 = document.getElementById('back3');
+    var skip3 = document.getElementById('skip3');
+    var saveSurvey = document.getElementById('saveSurvey');
+    var surveyData = { grade: null, favorite_subjects: [], daily_study_time: null };
+    function clearOptions(container) { container.innerHTML = ""; }
+    function createOption(text, value, question) {
+      var div = document.createElement("div");
+      div.className = "option";
+      div.setAttribute("data-value", value);
+      div.textContent = text;
+      div.addEventListener("click", function() {
+        if(question === "favorite_subjects") {
+          if(div.classList.contains("selected")) {
+            div.classList.remove("selected");
+            var index = surveyData.favorite_subjects.indexOf(value);
+            if(index > -1) { surveyData.favorite_subjects.splice(index, 1); }
+          } else {
+            if(surveyData.favorite_subjects.length < 3) { div.classList.add("selected"); surveyData.favorite_subjects.push(value); }
+            else { alert("Poți selecta maxim 3 materii."); }
+          }
+        } else {
+          var siblings = div.parentElement.querySelectorAll(".option");
+          siblings.forEach(function(sib) { sib.classList.remove("selected"); });
+          div.classList.add("selected");
+          surveyData[question] = value;
+        }
+      });
+      return div;
+    }
+    function getFavoriteSubjectsOptions(grade) {
+      var opts = [];
+      if(["I","II","III","IV"].includes(grade)) {
+        opts.push({text:"Stiinte ale naturii", value:"Stiinte ale naturii"});
+        opts.push({text:"Engleza", value:"Engleza"});
+        if(["I","II"].includes(grade)) {
+          opts.push({text:"Comunicare in limba romana", value:"Comunicare in limba romana"});
+          opts.push({text:"Matematica si Explorarea mediului", value:"Matematica si Explorarea mediului"});
+        }
+        if(["III","IV"].includes(grade)) {
+          opts.push({text:"Limba si Literatura Romana", value:"Limba si Literatura Romana"});
+          opts.push({text:"Matematica", value:"Matematica"});
+          if(grade === "IV") {
+            opts.push({text:"Istorie", value:"Istorie"});
+            opts.push({text:"Geografie", value:"Geografie"});
+          }
+        }
+      } else {
+        opts.push({text:"Matematica", value:"Matematica"});
+        opts.push({text:"Limba si Literatura Romana", value:"Limba si Literatura Romana"});
+        opts.push({text:"Chimie", value:"Chimie"});
+        opts.push({text:"Fizica", value:"Fizica"});
+        opts.push({text:"Geografie", value:"Geografie"});
+        opts.push({text:"Istorie", value:"Istorie"});
+        opts.push({text:"Biologie", value:"Biologie"});
+        opts.push({text:"Engleza", value:"Engleza"});
+        opts.push({text:"Limba Franceza", value:"Limba Franceza"});
+        opts.push({text:"Limba Germana", value:"Limba Germana"});
+      }
+      return opts;
+    }
+    next1.addEventListener("click", function() {
+      if(surveyData.grade) {
+        page1.classList.remove("active");
+        clearOptions(favOptions);
+        var subjects = getFavoriteSubjectsOptions(surveyData.grade);
+        subjects.forEach(function(opt) { favOptions.appendChild(createOption(opt.text, opt.value, "favorite_subjects")); });
+        page2.classList.add("active");
+      } else { alert("Te rugăm să selectezi clasa."); }
+    });
+    back2.addEventListener("click", function() { page2.classList.remove("active"); page1.classList.add("active"); });
+    next2.addEventListener("click", function() {
+      if(surveyData.favorite_subjects.length > 0) { page2.classList.remove("active"); page3.classList.add("active"); }
+      else { alert("Te rugăm să selectezi cel puțin o materie."); }
+    });
+    back3.addEventListener("click", function() { page3.classList.remove("active"); page2.classList.add("active"); });
+    skip1.addEventListener("click", function() { hideSurvey(); sendData("", "", ""); });
+    skip2.addEventListener("click", function() { hideSurvey(); sendData("", "", ""); });
+    skip3.addEventListener("click", function() { hideSurvey(); sendData("", "", ""); });
+    saveSurvey.addEventListener("click", function() {
+      if(surveyData.grade && surveyData.favorite_subjects.length > 0 && surveyData.daily_study_time) {
+        hideSurvey();
+        sendData(surveyData.favorite_subjects.join(","), surveyData.daily_study_time, surveyData.grade);
+      } else { alert("Te rugăm să completezi toate întrebările."); }
+    });
+    function hideSurvey() { surveyModal.classList.remove("active"); }
+    function showSurvey() { surveyModal.classList.add("active"); page1.classList.add("active"); page2.classList.remove("active"); page3.classList.remove("active"); }
+    function sendData(subjects, studyTime, grade) {
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", "saveSurvey.php", true);
+      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+      var params = "favorite_subjects=" + encodeURIComponent(subjects) + "&daily_study_time=" + encodeURIComponent(studyTime) + "&grade=" + encodeURIComponent(grade);
+      xhr.send(params);
+    }
+    var xhrCheck = new XMLHttpRequest();
+    xhrCheck.open("GET", "checkSurvey.php", true);
+    xhrCheck.onreadystatechange = function() {
+      if(xhrCheck.readyState === 4 && xhrCheck.status === 200) {
+        try { var res = JSON.parse(xhrCheck.responseText); if(!res.completed) { showSurvey(); } } catch(e) { showSurvey(); }
+      }
+    };
+    xhrCheck.send();
+    window.addEventListener("scroll", function(){
+      var header = document.getElementById("header");
+      if(window.scrollY > 50){ header.classList.add("scrolled"); } else { header.classList.remove("scrolled"); }
+    });
+    var gradeOptions = document.querySelectorAll('[data-question="grade"] .option');
+    gradeOptions.forEach(function(option) {
+      option.addEventListener("click", function() {
+        var siblings = option.parentElement.querySelectorAll(".option");
+        siblings.forEach(function(sib) { sib.classList.remove("selected"); });
+        option.classList.add("selected");
+        surveyData.grade = option.getAttribute("data-value");
+      });
+    });
+    var dailyOptions = document.querySelectorAll('[data-question="daily_study_time"] .option');
+    dailyOptions.forEach(function(option) {
+      option.addEventListener("click", function() {
+        var siblings = option.parentElement.querySelectorAll(".option");
+        siblings.forEach(function(sib) { sib.classList.remove("selected"); });
+        option.classList.add("selected");
+        surveyData.daily_study_time = option.getAttribute("data-value");
+      });
+    });
+  </script>
+</body>
+</html>

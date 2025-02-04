@@ -1,0 +1,22 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root { --bg: #f7f7f7; --text: #333; --primary: #444; --primary-hover: #333; --accent: #ffdd57; --header-bg: #fff; --feature-bg: #ffffff; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Roboto', sans-serif; background-color: var(--bg); color: var(--text); }
+.container { width: 90%; max-width: 1200px; margin: 0 auto; }
+header { background: var(--header-bg); padding: 20px 0; box-shadow: 0 2px 5px rgba(0,0,0,0.1); position: fixed; top: 0; width: 100%; z-index: 1000; }
+.header-container { display: flex; justify-content: space-between; align-items: center; }
+.logo h1 { font-family: 'Montserrat', sans-serif; font-size: 1.8em; margin: 0; }
+.logo-link { text-decoration: none; color: green; }
+.nav-right a { text-decoration: none; margin-left: 20px; font-family: 'Montserrat', sans-serif; color: var(--primary); padding: 8px 16px; border-radius: 20px; transition: background 0.3s; }
+.nav-right a:hover, .nav-right a.active { background: var(--primary); color: #fff; }
+.post-page { padding-top: 120px; padding-bottom: 60px; }
+.post-detail { background: #fff; border-radius: 8px; padding: 40px; margin: 40px 0; box-shadow: 0 4px 12px rgba(0,0,0,0.15); opacity: 1; transform: translateY(0); transition: opacity 0.8s ease, transform 0.8s ease; }
+.post-detail h2 { font-family: 'Montserrat', sans-serif; font-size: 2.5em; margin-bottom: 20px; }
+.post-meta { font-size: 0.9em; color: var(--primary); margin-bottom: 20px; }
+.post-detail img { width: 100%; max-height: 400px; object-fit: cover; border-radius: 8px; margin-bottom: 20px; transition: transform 0.4s ease; }
+.post-detail img:hover { transform: scale(1.05); }
+.post-content p { margin-bottom: 20px; font-size: 1.1em; line-height: 1.8; }
+.back-btn { display: inline-block; margin-top: 20px; text-decoration: none; font-family: 'Montserrat', sans-serif; background: var(--primary); color: #fff; padding: 10px 20px; border-radius: 20px; transition: background 0.3s; }
+.back-btn:hover { background: var(--primary-hover); }
+footer { background: #333; color: #fff; padding: 40px 0; text-align: center; }
+footer .contact-info h4 { font-family: 'Montserrat', sans-serif; margin-bottom: 10px; }

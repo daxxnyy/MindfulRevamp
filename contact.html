@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - Mindful</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #f7f7f7;
+      --text: #333;
+      --primary: #303030;
+      --primary-hover: #4f4f4f;
+      --accent: #94d2bd;
+      --header-bg: #fff;
+      --success-bg: #cce8cc;
+      --success-text: #2e7d32;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Roboto', sans-serif; background-color: var(--bg); color: var(--text); }
+    .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+    header { background: var(--header-bg); padding: 20px 0; box-shadow: 0 2px 5px rgba(0,0,0,0.1); position: fixed; top: 0; width: 100%; z-index: 1000; }
+    .header-container { display: flex; justify-content: space-between; align-items: center; }
+    .logo h1 { font-family: 'Montserrat', sans-serif; font-size: 1.8em; }
+    .logo-link { text-decoration: none; color: var(--primary); }
+    .nav-right a { text-decoration: none; margin-left: 20px; font-family: 'Montserrat', sans-serif; color: var(--primary); padding: 8px 16px; border-radius: 20px; transition: background 0.3s; }
+    .nav-right a:hover, .nav-right a.active { background: var(--primary); color: #fff; }
+    main { padding-top: 100px; padding-bottom: 60px; }
+    .contact-hero { background: var(--primary); color: #fff; padding: 80px 0; text-align: center; }
+    .contact-hero h2 { font-family: 'Montserrat', sans-serif; font-size: 2.5em; margin-bottom: 20px; }
+    .contact-hero p { font-size: 1.2em; }
+    .contact-section { padding: 60px 0; }
+    .contact-info { display: flex; flex-wrap: wrap; gap: 40px; }
+    .info-block { flex: 1; min-width: 280px; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+    .info-block h3 { font-family: 'Montserrat', sans-serif; margin-bottom: 10px; }
+    .info-block p { font-size: 1em; line-height: 1.6; }
+    .contact-form { margin-top: 40px; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+    .contact-form h3 { font-family: 'Montserrat', sans-serif; margin-bottom: 20px; }
+    .contact-form form { display: flex; flex-direction: column; gap: 15px; }
+    .contact-form input, .contact-form textarea {
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1em;
+      background-color: #fff;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .contact-form input:focus, .contact-form textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 5px rgba(148,210,189,0.5);
+      outline: none;
+    }
+    .contact-form textarea { resize: vertical; min-height: 120px; font-family: inherit; }
+    .contact-form button {
+      background: var(--primary);
+      color: #fff;
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      font-family: 'Montserrat', sans-serif;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .contact-form button:hover { background: var(--primary-hover); }
+    .success-message {
+      display: none;
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 6px;
+      background-color: var(--success-bg);
+      color: var(--success-text);
+      font-family: 'Montserrat', sans-serif;
+      text-align: center;
+    }
+    footer { background: #333; color: #fff; padding: 40px 0; text-align: center; }
+    footer .contact-info h4 { font-family: 'Montserrat', sans-serif; margin-bottom: 10px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container header-container">
+      <div class="logo">
+        <h1><a href="index.html" class="logo-link">Mindful</a></h1>
+      </div>
+      <nav class="nav-right">
+        <a href="index.html" class="nav-btn">Acasă</a>
+        <a href="blog.html" class="nav-btn">Blog</a>
+        <a href="contact.html" class="nav-btn active">Contact</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <section class="contact-hero">
+      <div class="container">
+        <h2>Contactează-ne</h2>
+        <p>Suntem aici pentru a răspunde întrebărilor tale și pentru a te ajuta.</p>
+      </div>
+    </section>
+    <section class="contact-section">
+      <div class="container">
+        <div class="contact-info">
+          <div class="info-block">
+            <h3>Email</h3>
+            <p>mindfulcontactwin@gmail.com</p>
+          </div>
+          <div class="info-block">
+            <h3>Telefon</h3>
+            <p>0748402864</p>
+          </div>
+        </div>
+        <div class="contact-form">
+          <h3>Trimite-ne un mesaj</h3>
+          <form id="contact-form" action="https://formspree.io/f/myyrqrzq" method="POST">
+            <input type="text" name="nume" placeholder="Nume complet" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <textarea name="mesaj" placeholder="Mesajul tău" required></textarea>
+            <button type="submit">Trimite mesajul</button>
+          </form>
+          <div id="success-message" class="success-message">Mesajul tău a fost trimis cu succes!</div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="container">
+      <div class="contact-info">
+        <h4>Contact</h4>
+        <p>Email: mindfulcontact@gmail.com</p>
+        <p>Telefon: 0748402864</p>
+      </div>
+      <p>© 2024 Mindful</p>
+    </div>
+  </footer>
+  <script>
+    const form = document.getElementById("contact-form");
+    const successMessage = document.getElementById("success-message");
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+      const formData = new FormData(form);
+      fetch(form.action, {
+        method: "POST",
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      }).then(response => {
+        if (response.ok) {
+          form.reset();
+          successMessage.style.display = "block";
+          setTimeout(() => {
+            successMessage.style.display = "none";
+          }, 5000);
+        } else {
+          response.json().then(data => {
+            if (Object.hasOwn(data, 'errors')) {
+              alert(data["errors"].map(error => error["message"]).join(", "));
+            } else {
+              alert("A apărut o eroare la trimiterea mesajului.");
+            }
+          });
+        }
+      }).catch(error => {
+        alert("A apărut o eroare la trimiterea mesajului.");
+      });
+    });
+  </script>
+</body>
+</html>

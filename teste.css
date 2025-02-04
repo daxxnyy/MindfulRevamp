@@ -1,0 +1,103 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+    :root { --bg: #f0f4f8; --text: #333; --primary: #0077cc; --primary-hover: #005fa3; --accent: #28a745; --error: #dc3545; --header-bg: #fff; --capacity-btn-bg: #ffc107; --capacity-btn-hover: #e0a800; }
+    body { font-family: 'Poppins', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+    .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+    header { background: var(--header-bg); padding: 20px 0; box-shadow: 0 2px 5px rgba(0,0,0,0.1); position: fixed; top: 0; width: 100%; z-index: 1000; }
+    .header-container { display: flex; justify-content: space-between; align-items: center; }
+    .logo h1 { font-family: 'Roboto', sans-serif; font-size: 2em; }
+    .logo-link { text-decoration: none; color: var(--primary); }
+    nav { display: flex; gap: 20px; }
+    nav a { text-decoration: none; color: var(--primary); font-weight: 500; padding: 8px 16px; border-radius: 20px; transition: background 0.3s, transform 0.3s; }
+    nav a:hover { background: var(--primary); color: #fff; transform: translateY(-2px); }
+    main { padding: 120px 20px 60px; min-height: calc(100vh - 200px); position: relative; }
+    .quiz-container { background: #fff; border-radius: 8px; padding: 40px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+    .quiz-progress { margin-bottom: 20px; }
+    .progress-bar-container { width: 100%; background: #ddd; border-radius: 10px; overflow: hidden; height: 20px; }
+    .progress-bar { height: 20px; width: 0; background: var(--accent); transition: width 0.3s ease; }
+    .timer { position: absolute; top: 130px; left: 20px; font-size: 1.1em; font-weight: bold; background: rgba(255,255,255,0.8); padding: 5px 10px; border-radius: 5px; }
+    .quiz-question { margin-bottom: 30px; position: relative; transition: transform 0.3s, box-shadow 0.3s; }
+    .quiz-question h2 { font-family: 'Roboto', sans-serif; font-size: 1.6em; margin-bottom: 10px; }
+    .quiz-options { display: flex; flex-direction: column; gap: 15px; }
+    .quiz-option { padding: 10px 15px; border: 2px solid var(--primary); border-radius: 8px; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s; min-width: 120px; text-align: center; }
+    .quiz-option:hover { transform: translateY(-5px) scale(1.05); box-shadow: 0 8px 15px rgba(0,0,0,0.1); }
+    .quiz-option.selected { background: var(--primary); color: #fff; }
+    .fib-input { padding: 10px; font-size: 1em; width: 100%; border: 2px solid var(--primary); border-radius: 8px; margin-top: 10px; transition: border-color 0.3s; }
+    .fib-input:focus { border-color: var(--accent); }
+    .ms-option { display: flex; align-items: center; gap: 10px; }
+    .ms-option input[type="checkbox"] { -webkit-appearance: none; appearance: none; width: 20px; height: 20px; border: 2px solid var(--primary); border-radius: 4px; margin-right: 5px; transition: background 0.3s, transform 0.3s; cursor: pointer; position: relative; }
+    .ms-option input[type="checkbox"]:checked { background: var(--primary); }
+    .ms-option input[type="checkbox"]:hover { transform: scale(1.1); }
+    .ms-option input[type="checkbox"]:checked::after { content: "\f00c"; font-family: "Font Awesome 5 Free"; font-weight: 900; position: absolute; top: -2px; left: 2px; color: #fff; font-size: 14px; }
+    .note { font-size: 0.9em; color: #666; margin-bottom: 8px; font-style: italic; }
+    .hint-button { position: absolute; top: 0; right: 0; transform: translate(0, -40px); background: var(--capacity-btn-bg); border: none; border-radius: 50%; width: 40px; height: 40px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1.2em; transition: background 0.3s, box-shadow 0.3s; }
+    .hint-button:hover { background: var(--capacity-btn-hover); box-shadow: 0 0 8px var(--capacity-btn-bg); }
+    .drag-container { display: flex; gap: 10px; margin-bottom: 20px; position: relative; }
+    .draggable { padding: 10px 15px; border: 2px solid var(--primary); border-radius: 8px; background: #fff; cursor: pointer; user-select: none; transition: transform 0.1s; }
+    .dropzone { padding: 10px; border: 2px dashed var(--primary); border-radius: 8px; min-height: 50px; position: relative; }
+    .nav-buttons { display: flex; justify-content: space-between; margin-top: 20px; }
+    .nav-btn { padding: 15px 30px; background: var(--primary); color: #fff; border: none; border-radius: 50px; font-size: 1em; cursor: pointer; transition: background 0.3s, transform 0.3s; }
+    .nav-btn:disabled { background: #aaa; cursor: not-allowed; }
+    .nav-btn:hover:not(:disabled) { background: var(--primary-hover); transform: translateY(-3px); }
+    #summary { display: none; }
+    .result-text { font-size: 1.8em; text-align: center; margin-top: 20px; }
+    .score-bar-container { margin: 20px auto; width: 80%; background: #ddd; border-radius: 10px; overflow: hidden; height: 20px; }
+    .score-bar { height: 20px; width: 0; transition: width 0.5s ease; }
+    .summary-container { margin-top: 20px; }
+    .summary-question { width: 100%; padding: 20px; background: #fff; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); margin-bottom: 20px; }
+    .summary-question h2 { font-family: 'Roboto', sans-serif; font-size: 1.4em; margin-bottom: 10px; }
+    .summary-option { display: block; padding: 8px 12px; border: 1px solid #ccc; border-radius: 6px; margin: 5px 0; transition: background 0.3s; }
+    .summary-option:hover { background: #f1f1f1; }
+    .option-correct { background: #d4edda; border-color: var(--accent); }
+    .option-incorrect { background: #f8d7da; border-color: var(--error); }
+    .icon { font-size: 1.2em; margin-left: 10px; }
+    .explanation { font-size: 0.95em; color: #555; margin-top: 4px; }
+    .comments-section { margin-top: 40px; }
+    .comments-section h3 { font-family: 'Roboto', sans-serif; margin-bottom: 20px; font-size: 1.5em; text-align: center; }
+    .comment { border-bottom: 1px solid #ddd; padding: 15px 0; display: flex; gap: 15px; animation: fadeIn 0.5s ease; margin-bottom: 10px; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    .comment img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+    .comment-content { flex: 1; position: relative; }
+    .comment-header { display: flex; align-items: center; margin-bottom: 5px; }
+    .comment-header .name { font-weight: 700; }
+    .comment-header .role { margin-left: 8px; font-size: 0.9em; color: #555; }
+    .comment-header .date { margin-left: auto; font-size: 0.8em; color: #aaa; }
+    .comment-text { margin-bottom: 10px; line-height: 1.6; }
+    .comment-actions { display: flex; align-items: center; gap: 10px; font-size: 0.9em; color: #555; }
+    .comment-actions button { background: var(--primary); color: #fff; border: none; padding: 5px 10px; margin-right: 5px; border-radius: 4px; cursor: pointer; transition: background 0.3s; }
+    .comment-actions button:hover { background: var(--primary-hover); }
+    .reply-toggle { background: transparent; color: var(--primary); border: 1px solid var(--primary); padding: 4px 8px; border-radius: 4px; cursor: pointer; }
+    .reply-form-container { margin-top: 10px; animation: fadeIn 0.3s ease; }
+    .reply-form-container textarea { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; resize: vertical; margin-bottom: 5px; font-family: 'Poppins', sans-serif; font-size: 1em; }
+    .reply-form-container button { padding: 6px 12px; background: var(--accent); border: none; border-radius: 4px; cursor: pointer; transition: background 0.3s; }
+    .reply-form-container button:hover { background: darkorange; }
+    #lessonCommentForm textarea, #lessonCommentForm button { width: 100%; }
+    .comment-replies { margin-left: 50px; padding-left: 15px; border-left: 2px solid #eee; margin-top: 10px; }
+    .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: none; align-items: center; justify-content: center; z-index: 2000; }
+    .modal-content { background: #fff; padding: 30px; border-radius: 8px; max-width: 600px; width: 90%; text-align: center; position: relative; animation: fadeInUp 0.5s ease both; }
+    .close-modal { position: absolute; top: 15px; right: 15px; background: none; border: none; font-size: 1.2em; cursor: pointer; color: #999; }
+    .modal-icon { font-size: 3em; margin-bottom: 15px; }
+    .modal-title { font-family: 'Roboto', sans-serif; font-size: 1.3em; margin-bottom: 10px; font-weight: bold; }
+    .modal-text { font-size: 1em; line-height: 1.5; color: #555; }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+ .comments-section { margin-top: 40px; }
+    .comments-section h3 { font-family: 'Roboto', sans-serif; margin-bottom: 20px; font-size: 1.5em; text-align: center; }
+    .comment { border-bottom: 1px solid #ddd; padding: 15px 0; display: flex; gap: 15px; animation: fadeIn 0.5s ease; margin-bottom: 10px; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    .comment img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+    .comment-content { flex: 1; position: relative; }
+    .comment-header { display: flex; align-items: center; margin-bottom: 5px; }
+    .comment-header .name { font-weight: 700; }
+    .comment-header .role { margin-left: 8px; font-size: 0.9em; color: #555; }
+    .comment-header .date { margin-left: auto; font-size: 0.8em; color: #aaa; }
+    .comment-text { margin-bottom: 10px; line-height: 1.6; }
+    .comment-actions button { background: var(--primary); color: #fff; border: none; padding: 5px 10px; margin-right: 5px; border-radius: 4px; cursor: pointer; transition: background 0.3s; }
+    .comment-actions button:hover { background: var(--primary-hover); }
+    .reply-toggle { background: transparent; color: var(--primary); border: 1px solid var(--primary); padding: 4px 8px; border-radius: 4px; cursor: pointer; }
+    .reply-form-container { margin-top: 10px; animation: fadeIn 0.3s ease; }
+    .reply-form-container textarea { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; resize: vertical; margin-bottom: 5px; font-family: 'Poppins', sans-serif; font-size: 1em; }
+    .reply-form-container button { padding: 6px 12px; background: var(--accent); border: none; border-radius: 4px; cursor: pointer; transition: background 0.3s; }
+    .reply-form-container button:hover { background: darkorange; }
+    #lessonCommentForm textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; resize: vertical; margin-bottom: 5px; font-family: 'Poppins', sans-serif; font-size: 1.1em; }
+    #lessonCommentForm button { padding: 10px 20px; background: var(--primary); color: #fff; border: none; border-radius: 4px; cursor: pointer; transition: background 0.3s; }
+    #lessonCommentForm button:hover { background: var(--primary-hover); }
+    .comment-replies { margin-left: 50px; padding-left: 15px; border-left: 2px solid #eee; margin-top: 10px; }
